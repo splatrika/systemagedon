@@ -14,6 +14,12 @@ func _set_planet_rotation_degress(value : float) -> void:
 	self._update_planet_orbit_transform()
 
 
+export var planet_rotation_factor : float = 1 setget _set_planet_rotation_factor
+func _set_planet_rotation_factor(value : float) -> void:
+	planet_rotation_factor = value
+	self._update_planet_orbit_transform()
+
+
 var planet : PPlanet setget _set_planet
 func _set_planet(value : PPlanet) -> void:
 	planet = value
@@ -25,17 +31,17 @@ func _set__planet(value : NodePath) -> void:
 	__planet = value
 	var node : Node = get_node(value)
 	if (node is PPlanet):
-		planet = node
+		self.planet = node
 	else:
 		push_error("Invalid PPlanet node. Node must be PPlanet")
 
 
 func _ready() -> void:
-	self.__planet = __planet
+	call_deferred("_set__planet", __planet)
 
 
 func _update_planet_orbit_transform() -> void:
 	if not is_instance_valid(self.planet):
 		return
-	self.planet.translation = Vector3(orbit_radius, 0, 0)
-	self.rotation_degrees = Vector3(0, planet_rotation_degress, 0)
+	planet.translation = Vector3(orbit_radius, 0, 0)
+	self.rotation_degrees = Vector3(0, planet_rotation_degress * planet_rotation_factor, 0)

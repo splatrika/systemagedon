@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "PStarSystem",
 "language": "GDScript",
 "path": "res://assets/scripts/p_star_system.gd"
+}, {
+"base": "Node",
+"class": "Time",
+"language": "GDScript",
+"path": "res://assets/scripts/time.gd"
+}, {
+"base": "Node",
+"class": "TimeUI",
+"language": "GDScript",
+"path": "res://assets/scripts/time_ui.gd"
 } ]
 _global_script_class_icons={
 "PPlanet": "",
 "PPlanetOrbit": "",
-"PStarSystem": ""
+"PStarSystem": "",
+"Time": "",
+"TimeUI": ""
 }
 
 [application]

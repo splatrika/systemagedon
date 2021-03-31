@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scripts/time.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/time_ui.gd" type="Script" id=6]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+emission_enabled = true
+emission = Color( 0.913725, 0.854902, 0.592157, 1 )
+emission_energy = 1.43
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Animation" id=4]
+resource_name = "main"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("StarSystem/PlanetOrbit:planet_rotation_degress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 50.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StarSystem/PlanetOrbit2:planet_rotation_degress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 50.0, 200.0 ]
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.329097, 0.944296, 0, -0.944296, 0.329097, 0, 44.4011, 22.1778 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="StarSystem" parent="." instance=ExtResource( 4 )]
+__PPlanetOrbit_orbits = [ NodePath("PlanetOrbit"), NodePath("PlanetOrbit2") ]
+
+[node name="PlanetOrbit" parent="StarSystem" instance=ExtResource( 2 )]
+orbit_radius = 17.0
+planet_rotation_degress = 50.0
+__planet = NodePath("Planet")
+
+[node name="Planet" parent="StarSystem/PlanetOrbit" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5616, 0, 0 )
+
+[node name="PlanetOrbit2" parent="StarSystem" instance=ExtResource( 2 )]
+orbit_radius = 28.0
+planet_rotation_degress = 50.0
+planet_rotation_factor = 1.2
+__planet = NodePath("Planet")
+
+[node name="Planet" parent="StarSystem/PlanetOrbit2" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="StarSystem"]
+omni_range = 4096.0
+
+[node name="MeshInstance" type="MeshInstance" parent="StarSystem"]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/main = SubResource( 4 )
+
+[node name="Time" type="Node" parent="."]
+script = ExtResource( 5 )
+__star_system = NodePath("../StarSystem")
+
+[node name="TimeUI" type="Node" parent="."]
+script = ExtResource( 6 )
+__time = NodePath("../Time")
