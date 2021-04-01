@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/start_system_objects/OrbitsDrawer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="OrbitsDrawer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 630.36, 390.029 )
+pixel_size_in_3D = 0.1
+line_width = 10.0
+
+[node name="PlanetOrbit" parent="." instance=ExtResource( 2 )]
+orbit_radius = 10.0
+
+[node name="PlanetOrbit2" parent="." instance=ExtResource( 2 )]
+orbit_radius = 20.0

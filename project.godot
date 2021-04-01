@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "POrbitDrawer",
+"language": "GDScript",
+"path": "res://assets/scripts/p_orbit_drawer.gd"
+}, {
+"base": "Spatial",
+"class": "POrbitsViewer",
+"language": "GDScript",
+"path": "res://assets/scripts/p_orbits_viewer.gd"
+}, {
 "base": "Area",
 "class": "PPlanet",
 "language": "GDScript",
@@ -35,6 +45,8 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/time_ui.gd"
 } ]
 _global_script_class_icons={
+"POrbitDrawer": "",
+"POrbitsViewer": "",
 "PPlanet": "",
 "PPlanetOrbit": "",
 "PStarSystem": "",

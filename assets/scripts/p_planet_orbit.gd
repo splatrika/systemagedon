@@ -45,3 +45,10 @@ func _update_planet_orbit_transform() -> void:
 		return
 	planet.translation = Vector3(orbit_radius, 0, 0)
 	self.rotation_degrees = Vector3(0, planet_rotation_degress * planet_rotation_factor, 0)
+	get_tree().call_deferred("call_group", "PPlanetOrbitListener", "_on_PPlanetOrbit_updated", self)
+
+func _enter_tree():
+	get_tree().call_deferred("call_group", "PPlanetOrbitListener", "_on_PPlanetOrbit_updated", self)
+
+func _exit_tree():
+	get_tree().call_deferred("call_group", "PPlanetOrbitListener", "_on_PPlanetOrbit_removed", self)

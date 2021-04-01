@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
@@ -92,3 +93,9 @@ __star_system = NodePath("../StarSystem")
 [node name="TimeUI" type="Node" parent="."]
 script = ExtResource( 6 )
 __time = NodePath("../Time")
+
+[node name="OrbitsViewer" parent="." instance=ExtResource( 1 )]
+size = Vector2( 1000, 1000 )
+pixel_size_in_3D = 0.08
+orbit_line_width = 3.0
+line_color = Color( 0.886275, 0.898039, 1, 0.454902 )
