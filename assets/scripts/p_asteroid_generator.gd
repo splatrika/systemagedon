@@ -4,8 +4,23 @@ extends Spatial
 
 
 export(Array, PackedScene) var asteroids_prefabs
+
+
 export(PackedScene) var asteroid_path_prefab
+
+
 export var level_node : NodePath
+
+
+export var asteroids_speed : float = 10
+
+
+export var spawn_delay : float = 0.5 setget _set_spawn_delay
+func _set_spawn_delay(value : float):
+	var timer : Timer = get_node_or_null("SpawnTimer") as Timer
+	if is_instance_valid(timer):
+		timer.wait_time = value
+	spawn_delay = value
 
 
 export var size : Vector3 setget _set_size
@@ -39,86 +54,137 @@ func spawn_asteroid() -> void:
 	var direction : int = randi() % 6
 	var created_path : PAsteroidPath = asteroid_path_prefab.instance()
 	var point_position : Vector3
+	var second_point_position : Vector3
+	var sub_point_position : Vector3
 	var size_half : Vector3 = self.size / 2
 	if direction == _Direction.FromUp:
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
 		created_path.curve.add_point(point_position)
-		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = 0
-		point_position.z = randi() % int(size.z) - size_half.z
-		created_path.curve.add_point(point_position)
+		second_point_position.x = randi() % int(size.x) - size_half.x
+		second_point_position.y = 0
+		second_point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = size_half.y * -1
 		point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(second_point_position, point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	elif direction == _Direction.FromDown:
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = size_half.y * -1
 		point_position.z = randi() % int(size.z) - size_half.z
 		created_path.curve.add_point(point_position)
-		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = 0
-		point_position.z = randi() % int(size.z) - size_half.z
-		created_path.curve.add_point(point_position)
+		second_point_position.x = randi() % int(size.x) - size_half.x
+		second_point_position.y = 0
+		second_point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	elif direction == _Direction.FromLeft:
 		point_position.x = size_half.x * -1
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
 		created_path.curve.add_point(point_position)
-		point_position.x = 0
-		point_position.y = randi() % int(size.y) - size_half.y
-		point_position.z = randi() % int(size.z) - size_half.z
-		created_path.curve.add_point(point_position)
+		second_point_position.x = 0
+		second_point_position.y = randi() % int(size.y) - size_half.y
+		second_point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	elif direction == _Direction.FromRight:
 		point_position.x = size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
 		created_path.curve.add_point(point_position)
-		point_position.x = 0
-		point_position.y = randi() % int(size.y) - size_half.y
-		point_position.z = randi() % int(size.z) - size_half.z
-		created_path.curve.add_point(point_position)
+		second_point_position.x = 0
+		second_point_position.y = randi() % int(size.y) - size_half.y
+		second_point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = size_half.x * -1
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = randi() % int(size.z) - size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	elif direction == _Direction.FromBack:
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = size_half.z * -1
 		created_path.curve.add_point(point_position)
-		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = randi() % int(size.y) - size_half.y
-		point_position.z = 0
-		created_path.curve.add_point(point_position)
+		second_point_position.x = randi() % int(size.x) - size_half.x
+		second_point_position.y = randi() % int(size.y) - size_half.y
+		second_point_position.z = 0
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	elif direction == _Direction.FromBack:
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = size_half.z * -1
 		created_path.curve.add_point(point_position)
-		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = randi() % int(size.y) - size_half.y
-		point_position.z = 0
-		created_path.curve.add_point(point_position)
+		second_point_position.x = randi() % int(size.x) - size_half.x
+		second_point_position.y = randi() % int(size.y) - size_half.y
+		second_point_position.z = 0
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
+		created_path.curve.add_point(second_point_position)
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = randi() % int(size.y) - size_half.y
 		point_position.z = size_half.z
+		# Sub
+		sub_point_position = _get_average_point(point_position, second_point_position)
+		created_path.curve.add_point(sub_point_position)
+		# ---
 		created_path.curve.add_point(point_position)
 	created_path.asteroid_prefab = self.asteroids_prefabs[randi() % len(self.asteroids_prefabs)]
+	created_path.speed = asteroids_speed
 	get_node(self.level_node).add_child(created_path)
 	created_path.push_asteroid()
 
@@ -129,15 +195,16 @@ func _ready() -> void:
 		$Down.queue_free()
 	else:
 		call_deferred("_set_size", size)
+	$SpawnTimer.wait_time = self.spawn_delay
 
 
 func _on_SpawnTimer_timeout():
 	spawn_asteroid()
 
 
-func _generate_path(direction : int, from_start : bool) -> PAsteroidPath:
-	var created_path : PAsteroidPath = asteroid_path_prefab.instance()
-	var start_mask = -1 if from_start else 1
-	var end_mask = 1 if from_start else -1
-
-	return created_path
+func _get_average_point(first : Vector3, second : Vector3) -> Vector3:
+	var created_point : Vector3
+	created_point.x = (first.x + second.x) / 2
+	created_point.y = (first.y + second.y) / 2
+	created_point.z = (first.z + second.z) / 2
+	return created_point
