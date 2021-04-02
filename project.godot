@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "PAsteroid",
+"language": "GDScript",
+"path": "res://assets/scripts/p_asteroid.gd"
+}, {
+"base": "Spatial",
+"class": "PAsteroidGenerator",
+"language": "GDScript",
+"path": "res://assets/scripts/p_asteroid_generator.gd"
+}, {
+"base": "Path",
+"class": "PAsteroidPath",
+"language": "GDScript",
+"path": "res://assets/scripts/p_asteroid_path.gd"
+}, {
 "base": "Node2D",
 "class": "POrbitDrawer",
 "language": "GDScript",
@@ -45,6 +60,9 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/time_ui.gd"
 } ]
 _global_script_class_icons={
+"PAsteroid": "",
+"PAsteroidGenerator": "",
+"PAsteroidPath": "",
 "POrbitDrawer": "",
 "POrbitsViewer": "",
 "PPlanet": "",
@@ -57,6 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ProjectStarSystemCurse"
+run/main_scene="res://tests/scene/star_system_test.tscn"
 config/icon="res://icon.png"
 
 [display]

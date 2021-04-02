@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/scripts/p_asteroid_generator.gd" type="Script" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+
+[node name="AsteroidGenerator" type="Spatial"]
+script = ExtResource( 1 )
+size = Vector3( 20, 20, 20 )
+
+[node name="Up" type="Spatial" parent="."]
+
+[node name="FrontLeft" type="MeshInstance" parent="Up"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 10, 10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="FrontRight" type="MeshInstance" parent="Up"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, 10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="BackLeft" type="MeshInstance" parent="Up"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 10, -10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="BackRight" type="MeshInstance" parent="Up"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, -10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Down" type="Spatial" parent="."]
+
+[node name="FrontLeft" type="MeshInstance" parent="Down"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -10, 10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="FrontRight" type="MeshInstance" parent="Down"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, 10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="BackLeft" type="MeshInstance" parent="Down"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -10, -10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="BackRight" type="MeshInstance" parent="Down"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -10, -10 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.096
+autostart = true
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

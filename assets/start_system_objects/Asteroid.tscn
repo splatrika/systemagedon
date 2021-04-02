@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/scripts/p_asteroid.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.625075
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.6
+height = 1.2
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[node name="Asteroid" type="Area"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+[connection signal="area_entered" from="." to="." method="_on_Asteroid_area_entered"]
