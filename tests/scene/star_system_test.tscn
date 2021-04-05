@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
@@ -9,21 +9,32 @@
 [ext_resource path="res://assets/start_system_objects/Asteroid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/start_system_objects/AsteroidPath.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/start_system_objects/AsteroidGenerator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/scripts/lose_controller.gd" type="Script" id=10]
+[ext_resource path="res://assets/hud/LoseHUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://tests/resources/sky.png" type="Texture" id=12]
+[ext_resource path="res://assets/hud/PlayerScoreHUD.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/scripts/player_score.gd" type="Script" id=14]
+[ext_resource path="res://assets/scripts/hud_controllers/player_score_hud_controller.gd" type="Script" id=15]
+[ext_resource path="res://assets/start_system_objects/PlayerScoreTimeController.tscn" type="PackedScene" id=16]
 
-[sub_resource type="Environment" id=1]
-background_mode = 1
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 12 )
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_energy = 0.0
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
 emission_enabled = true
 emission = Color( 0.913725, 0.854902, 0.592157, 1 )
 emission_energy = 1.43
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="Animation" id=4]
-resource_name = "main"
+[sub_resource type="Animation" id=5]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("StarSystem/PlanetOrbit:planet_rotation_degress")
@@ -56,7 +67,7 @@ tracks/1/keys = {
 transform = Transform( 1, 0, 0, 0, 0.329097, 0.944296, 0, -0.944296, 0.329097, 0, 72.2855, 33.1778 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 
 [node name="StarSystem" parent="." instance=ExtResource( 4 )]
 __PPlanetOrbit_orbits = [ NodePath("PlanetOrbit"), NodePath("PlanetOrbit2"), NodePath("PlanetOrbit3") ]
@@ -92,11 +103,11 @@ omni_range = 4096.0
 
 [node name="MeshInstance" type="MeshInstance" parent="StarSystem"]
 transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/main = SubResource( 4 )
+anims/main = SubResource( 5 )
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -116,6 +127,25 @@ line_color = Color( 0.886275, 0.898039, 1, 0.454902 )
 asteroids_prefabs = [ ExtResource( 7 ) ]
 asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../StarSystem")
-asteroids_speed = 10.0
-spawn_delay = 0.3
+asteroids_speed = 50.0
+spawn_delay = 0.04
 size = Vector3( 150, 150, 150 )
+
+[node name="LoseController" type="Node" parent="."]
+script = ExtResource( 10 )
+lose_screen_prefab = ExtResource( 11 )
+level_scene = NodePath("..")
+
+[node name="PlayerScore" type="Node" parent="."]
+script = ExtResource( 14 )
+
+[node name="PlayerScoreHUDController" type="Node" parent="."]
+script = ExtResource( 15 )
+__player_score_hud = NodePath("../CanvasLayer/PlayerScoreHUD")
+
+[node name="PlayerScoreTimeController" parent="." instance=ExtResource( 16 )]
+__player_score = NodePath("../PlayerScore")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerScoreHUD" parent="CanvasLayer" instance=ExtResource( 13 )]
