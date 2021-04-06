@@ -8,6 +8,9 @@ export var level_scene : NodePath
 export var viewer_prefab : PackedScene
 
 
+export var run_small_accent_y_position : float = 0
+
+
 var _viewers : Dictionary = {}
 
 
@@ -25,3 +28,9 @@ func on_AsteroidPath_created(path_id : int, path : PAsteroidPath):
 func on_AsteroidPath_removed(path_id : int):
 	if is_instance_valid(self._viewers[path_id]):
 		self._viewers[path_id].queue_free()
+
+
+func on_AsteroidPath_asteroid_moved(path_id : int, asteroid : PAsteroid):
+	if is_instance_valid(self._viewers[path_id]):
+		if asteroid.global_transform.origin.y < self.run_small_accent_y_position:
+			self._viewers[path_id].make_small_accent()

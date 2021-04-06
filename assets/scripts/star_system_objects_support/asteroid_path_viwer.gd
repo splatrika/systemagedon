@@ -8,6 +8,9 @@ export var asteroid_path_item : PackedScene
 var _pathes_items : Array = []
 
 
+var _is_small_accent = false
+
+
 func push_asteroid_path(path : PAsteroidPath):
 	var curve : Curve3D = path.curve
 	var points_count : int = curve.get_point_count()
@@ -24,3 +27,11 @@ func push_asteroid_path(path : PAsteroidPath):
 		created_path_item.translation = first_point
 		created_path_item.look_at(second_point, Vector3(0, 1, 0))
 		self._pathes_items.append(created_path_item)
+
+
+func make_small_accent():
+	if self._is_small_accent:
+		return
+	for item in _pathes_items:
+		item.make_small_accent()
+		self._is_small_accent = true
