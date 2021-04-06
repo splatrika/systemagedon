@@ -15,6 +15,9 @@ export var level_node : NodePath
 export var asteroids_speed : float = 10
 
 
+export var pathes_smooth : int = 6
+
+
 export var spawn_delay : float = 0.5 setget _set_spawn_delay
 func _set_spawn_delay(value : float):
 	var timer : Timer = get_node_or_null("SpawnTimer") as Timer
@@ -51,33 +54,46 @@ enum _Direction {
 
 
 func spawn_asteroid() -> void:
-	var direction : int = randi() % 6
+	var direction : int = _Direction.FromUp
 	var created_path : PAsteroidPath = asteroid_path_prefab.instance()
 	var point_position : Vector3
 	var second_point_position : Vector3
 	var sub_point_position : Vector3
 	var size_half : Vector3 = self.size / 2
 	if direction == _Direction.FromUp:
+		var points : Array = []
 		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = size_half.y
+		point_position.y = 0
 		point_position.z = randi() % int(size.z) - size_half.z
-		created_path.curve.add_point(point_position)
-		second_point_position.x = randi() % int(size.x) - size_half.x
-		second_point_position.y = 0
-		second_point_position.z = randi() % int(size.z) - size_half.z
-		# Sub
-		sub_point_position = _get_average_point(point_position, second_point_position)
-		created_path.curve.add_point(sub_point_position)
-		# ---
-		created_path.curve.add_point(second_point_position)
-		point_position.x = randi() % int(size.x) - size_half.x
-		point_position.y = size_half.y * -1
-		point_position.z = randi() % int(size.z) - size_half.z
-		# Sub
-		sub_point_position = _get_average_point(second_point_position, point_position)
-		created_path.curve.add_point(sub_point_position)
-		# ---
-		created_path.curve.add_point(point_position)
+		points.append(point_position)
+
+
+		var up_path_offset : float = 0
+		var step_x = randi() % int((size_half.x / self.pathes_smooth * 2)) - (size_half.x / self.pathes_smooth)
+		var step_z = randi() % int((size_half.z / self.pathes_smooth * 2)) - (size_half.z / self.pathes_smooth)
+		var up_point : Vector3 = point_position
+		var offset_step = size_half.y / pathes_smooth
+		for i in range(self.pathes_smooth):
+			up_path_offset += offset_step
+			up_point.y = up_path_offset
+			up_point.x += step_x * (i + 1)
+			up_point.z += step_z * (i + 1)
+			points.insert(0, up_point)
+		
+		up_path_offset = 0
+		up_point = point_position
+		for i in range(self.pathes_smooth):
+			up_path_offset -= offset_step
+			up_point.y = up_path_offset
+			up_point.x += step_x * (i + 1)
+			up_point.z += step_z * (i + 1)
+			points.append(up_point)
+		
+		
+		
+		for point in points:
+			created_path.curve.add_point(point)
+
 	elif direction == _Direction.FromDown:
 		point_position.x = randi() % int(size.x) - size_half.x
 		point_position.y = size_half.y * -1

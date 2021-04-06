@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/star_system_objects_support/AsteroidPathItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tests/scene/look_at_test.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="AsteroidPathItem" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.987881, 0.0761844, 0.135226, 0, 0.871245, -0.490848, -0.15521, -0.4849, -0.860687, 0, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.666261, 2.41842, 4.24063 )

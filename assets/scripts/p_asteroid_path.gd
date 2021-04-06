@@ -23,3 +23,11 @@ func _physics_process(delta : float):
 	$PathFollow.offset += self.speed * delta
 	if $PathFollow.unit_offset == 1:
 		queue_free()
+
+
+func _enter_tree():
+	get_tree().call_group("PAsteroidPathListener", "on_AsteroidPath_created", self.get_instance_id(), self)
+
+
+func _exit_tree():
+	get_tree().call_group("PAsteroidPathListener", "on_AsteroidPath_removed", self.get_instance_id())

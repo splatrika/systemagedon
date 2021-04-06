@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/star_system_objects_support/asteroid_path_viwer.gd" type="Script" id=1]
+[ext_resource path="res://assets/star_system_objects_support/AsteroidPathItem.tscn" type="PackedScene" id=2]
+
+[node name="AsteroidPathContainer" type="Spatial"]
+script = ExtResource( 1 )
+asteroid_path_item = ExtResource( 2 )

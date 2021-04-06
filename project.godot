@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "AsteroidPathViewController",
+"language": "GDScript",
+"path": "res://assets/scripts/star_system_objects_support/asteroid_path_view_controller.gd"
+}, {
+"base": "Spatial",
+"class": "AsteroidPathViewer",
+"language": "GDScript",
+"path": "res://assets/scripts/star_system_objects_support/asteroid_path_viwer.gd"
+}, {
+"base": "Node",
 "class": "LoseController",
 "language": "GDScript",
 "path": "res://assets/scripts/lose_controller.gd"
@@ -90,6 +100,8 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/time_ui.gd"
 } ]
 _global_script_class_icons={
+"AsteroidPathViewController": "",
+"AsteroidPathViewer": "",
 "LoseController": "",
 "PAsteroid": "",
 "PAsteroidGenerator": "",
