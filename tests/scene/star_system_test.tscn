@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/time.gd" type="Script" id=5]
-[ext_resource path="res://assets/scripts/time_ui.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/move_orbits_ui.gd" type="Script" id=6]
 [ext_resource path="res://assets/start_system_objects/Asteroid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/start_system_objects/AsteroidPath.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/start_system_objects/AsteroidGenerator.tscn" type="PackedScene" id=9]
@@ -18,6 +18,7 @@
 [ext_resource path="res://assets/start_system_objects/PlayerScoreTimeController.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/scripts/star_system_objects_support/asteroid_path_view_controller.gd" type="Script" id=17]
 [ext_resource path="res://assets/star_system_objects_support/AteroidPathViewer.tscn" type="PackedScene" id=18]
+
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 12 )
@@ -180,8 +181,13 @@ asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../StarSystem")
 asteroids_speed = 50.0
 pathes_smooth = 15
-spawn_delay = 0.6
+spawn_delay = 2.0
 size = Vector3( 100, 150, 80 )
+
+[node name="MoveOrbitsUI" type="Node" parent="."]
+script = ExtResource( 6 )
+__star_system = NodePath("../StarSystem")
+move_speed = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/main = SubResource( 5 )
@@ -189,10 +195,6 @@ anims/main = SubResource( 5 )
 [node name="Time" type="Node" parent="."]
 script = ExtResource( 5 )
 __star_system = NodePath("../StarSystem")
-
-[node name="TimeUI" type="Node" parent="."]
-script = ExtResource( 6 )
-__time = NodePath("../Time")
 
 [node name="OrbitsViewer" parent="." instance=ExtResource( 1 )]
 size = Vector2( 2000, 2000 )

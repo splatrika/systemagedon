@@ -100,6 +100,7 @@ func spawn_asteroid() -> void:
 
 
 func _ready() -> void:
+	randomize()
 	if not Engine.editor_hint:
 		$Up.queue_free()
 		$Down.queue_free()
