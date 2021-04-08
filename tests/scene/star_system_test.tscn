@@ -19,7 +19,6 @@
 [ext_resource path="res://assets/scripts/star_system_objects_support/asteroid_path_view_controller.gd" type="Script" id=17]
 [ext_resource path="res://assets/star_system_objects_support/AteroidPathViewer.tscn" type="PackedScene" id=18]
 
-
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 12 )
 
@@ -181,12 +180,13 @@ asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../StarSystem")
 asteroids_speed = 50.0
 pathes_smooth = 15
-spawn_delay = 2.0
+spawn_delay = 1.0
 size = Vector3( 100, 150, 80 )
 
 [node name="MoveOrbitsUI" type="Node" parent="."]
 script = ExtResource( 6 )
 __star_system = NodePath("../StarSystem")
+__orbit_drawer = NodePath("../OrbitsViewer")
 move_speed = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -201,6 +201,7 @@ size = Vector2( 2000, 2000 )
 pixel_size_in_3D = 0.08
 orbit_line_width = 3.0
 line_color = Color( 0.886275, 0.898039, 1, 0.454902 )
+accent_color = Color( 1, 1, 0.196078, 0.756863 )
 
 [node name="LoseController" type="Node" parent="."]
 script = ExtResource( 10 )

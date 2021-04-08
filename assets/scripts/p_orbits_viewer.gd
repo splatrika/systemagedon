@@ -24,3 +24,13 @@ export var line_color : Color = Color.white setget _set_line_color
 func _set_line_color(value : Color):
 	line_color = value
 	$DrawerViewport/OrbitsDrawer.color = value
+
+export var accent_color : Color = Color.yellow setget _set_accent_color
+func _set_accent_color(value : Color):
+	accent_color = value
+	$DrawerViewport/OrbitsDrawer.accent_color = value
+
+export var accent_orbit_index : int = -1 setget _set_accent_orbit_index
+func _set_accent_orbit_index(value : int):
+	accent_orbit_index = value
+	$DrawerViewport/OrbitsDrawer.accent_orbit_index = value

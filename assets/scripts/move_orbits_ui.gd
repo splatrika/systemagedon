@@ -4,13 +4,22 @@ extends Node
 
 var star_system : PStarSystem
 
-
-export var __star_system : NodePath
+export var __star_system : NodePath setget _set__star_system
 func _set__star_system(value : NodePath):
 	__star_system = value
 	var node : Node = get_node_or_null(value)
 	if node is PStarSystem:
 		self.star_system = node as PStarSystem
+
+
+var orbit_viewer : POrbitsViewer
+
+export var __orbit_drawer : NodePath setget _set__orbit_drawer
+func _set__orbit_drawer(value : NodePath):
+	__orbit_drawer = value
+	var node : Node = get_node_or_null(value)
+	if node is POrbitsViewer:
+		self.orbit_viewer = node as POrbitsViewer
 
 
 export var move_speed : float
@@ -24,10 +33,14 @@ func set_selected_orbit_index(value : int):
 		selected_orbit_index = len(self.star_system.PPlanetOrbit_orbits) - 1
 	else:
 		selected_orbit_index = value
+	if is_instance_valid(self.orbit_viewer):
+		self.orbit_viewer.accent_orbit_index = self.selected_orbit_index
 
 
 func _ready() -> void:
 	call_deferred("_set__star_system", self.__star_system)
+	call_deferred("_set__orbit_drawer", self.__orbit_drawer)
+	call_deferred("set_selected_orbit_index", 0)
 
 
 func _input(event : InputEvent) -> void:

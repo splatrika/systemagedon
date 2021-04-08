@@ -25,6 +25,18 @@ func _set_color(value : Color):
 	update()
 
 
+export var accent_color : Color = Color.yellow setget _set_accent_color
+func _set_accent_color(value : Color):
+	accent_color = value
+	update()
+
+
+export var accent_orbit_index : int = -1 setget _set_accent_orbit_index
+func _set_accent_orbit_index(value : int):
+	accent_orbit_index = value
+	update()
+
+
 var _PPlanetOrbit_orbits_to_draw : Array
 
 
@@ -41,7 +53,10 @@ func _on_PPlanetOrbit_removed(orbit : PPlanetOrbit):
 
 
 func _draw():
+	var i : int = 0
 	for orbit in self._PPlanetOrbit_orbits_to_draw:
 		var center : Vector2 = Vector2(0, 0)
 		var radius : float = 1 / self.pixel_size_in_3D * orbit.orbit_radius
-		draw_arc(center, radius, 0, PI*2, self.smoothness, self.color, line_width)
+		var line_color = self.accent_color if (i == self.accent_orbit_index) else self.color
+		draw_arc(center, radius, 0, PI*2, self.smoothness, line_color, line_width)
+		i += 1
