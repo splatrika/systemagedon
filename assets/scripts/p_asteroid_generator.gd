@@ -43,7 +43,7 @@ func _set_size(value : Vector3) -> void:
 		$Down/BackRight.translation = Vector3(size_half.x, size_half.y * -1, size_half.z * -1)
 
 
-var _planets : Array = []
+var _planet_orbits : Array = []
 
 
 enum _Direction {
@@ -64,9 +64,10 @@ func spawn_asteroid() -> void:
 	var sub_point_position : Vector3
 	var size_half : Vector3 = self.size / 2
 	if direction == _Direction.FromUp:
-		var target_planet : int = randi() % len(self._planets)
+		var target_planet_orbit : int = randi() % len(self._planet_orbits)
 		var points : Array = []
-		point_position = self._planets[target_planet].global_transform.origin
+		var target_orbit : PPlanetOrbit = self._planet_orbits[target_planet_orbit]
+		point_position = target_orbit.get_planet_position_by_rotation(target_orbit.get_planet_rotation_as_radians())
 		points.append(point_position)
 
 		var up_path_offset : float = 0
@@ -108,6 +109,7 @@ func _ready() -> void:
 		call_deferred("_set_size", size)
 	$SpawnTimer.wait_time = self.spawn_delay
 	add_to_group("PPlanetListener")
+	add_to_group("PPlanetOrbitListener")
 
 
 func _on_SpawnTimer_timeout():
@@ -122,9 +124,9 @@ func _get_average_point(first : Vector3, second : Vector3) -> Vector3:
 	return created_point
 
 
-func on_PPlanet_created(planet : PPlanet):
-	self._planets.append(planet)
+func _on_PPlanetOrbit_updated(planet_orbit : PPlanetOrbit):
+	self._planet_orbits.append(planet_orbit)
 
 
-func on_PPlanet_removed(planet : PPlanet):
-	self._planets.remove(self._planets.find(planet))
+func _on_PPlanetOrbit_removed(planet_orbit : PPlanetOrbit):
+	self._planet_orbits.remove(self._planet_orbits.find(planet_orbit))

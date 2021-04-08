@@ -161,6 +161,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
 orbit_radius = 45.0
 planet_rotation_degress = 50.0
 planet_rotation_factor = 1.5
+self_rotate_velocity = -5.0
 __planet = NodePath("Planet")
 
 [node name="Planet" parent="StarSystem/PlanetOrbit3" instance=ExtResource( 3 )]
@@ -180,7 +181,7 @@ asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../StarSystem")
 asteroids_speed = 50.0
 pathes_smooth = 15
-spawn_delay = 1.0
+spawn_delay = 3.0
 size = Vector3( 100, 150, 80 )
 
 [node name="MoveOrbitsUI" type="Node" parent="."]
