@@ -14,12 +14,6 @@ func _set_planet_rotation_degress(value : float) -> void:
 	self._update_planet_orbit_transform()
 
 
-export var planet_rotation_factor : float = 1 setget _set_planet_rotation_factor
-func _set_planet_rotation_factor(value : float) -> void:
-	planet_rotation_factor = value
-	self._update_planet_orbit_transform()
-
-
 var planet : PPlanet setget _set_planet
 func _set_planet(value : PPlanet) -> void:
 	planet = value
@@ -46,7 +40,6 @@ func get_planet_rotation_as_radians() -> float:
 func get_planet_position_by_rotation(radians : float) -> Vector3:
 	var created_position : Vector3 = Vector3.ZERO
 	created_position.y = 0
-	radians += 0.6
 	created_position.x = cos(-radians) * self.orbit_radius
 	created_position.z = sin(-radians) * self.orbit_radius
 	return created_position
@@ -60,7 +53,7 @@ func _update_planet_orbit_transform() -> void:
 	if not is_instance_valid(self.planet):
 		return
 	planet.translation = Vector3(orbit_radius, 0, 0)
-	self.rotation_degrees = Vector3(0, planet_rotation_degress * planet_rotation_factor, 0)
+	self.rotation_degrees = Vector3(0, planet_rotation_degress, 0)
 	get_tree().call_deferred("call_group", "PPlanetOrbitListener", "_on_PPlanetOrbit_updated", self)
 
 
