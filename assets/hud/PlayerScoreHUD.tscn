@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scripts/hud/p_player_score_hud.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/fonts/Exo2-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 3 )
 
 [node name="PlayerScoreHUD" type="Control"]
 margin_right = 141.0
@@ -11,12 +21,25 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 15.0994
-margin_top = 13.9073
-margin_right = 55.0994
-margin_bottom = 27.9073
-rect_scale = Vector2( 2, 2 )
+margin_left = 31.596
+margin_top = 46.9934
+margin_right = 282.596
+margin_bottom = 119.993
+custom_fonts/font = SubResource( 1 )
 text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.001409
+anchor_right = 0.001409
+margin_left = 33.0861
+margin_top = 29.457
+margin_right = 87.0861
+margin_bottom = 58.457
+custom_fonts/font = SubResource( 2 )
+text = "очки"
 __meta__ = {
 "_edit_use_anchors_": false
 }

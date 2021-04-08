@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scripts/p_lose_hud.gd" type="Script" id=1]
+[ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/resources/fonts/Exo2-Black.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
 
 [node name="LoseHUD" type="Control"]
 pause_mode = 2
@@ -14,7 +23,9 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.231373 )
+margin_left = 0.649292
+margin_right = 0.649292
+color = Color( 0, 0, 0, 0.411765 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,13 +35,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -312.368
-margin_top = -100.875
-margin_right = -187.368
-margin_bottom = -69.8751
-rect_scale = Vector2( 5, 5 )
-text = "LOSE
-"
+margin_left = -495.0
+margin_top = -114.5
+margin_right = 495.0
+margin_bottom = -29.5
+custom_fonts/font = SubResource( 1 )
+text = "Угрохали планету — провал"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,11 +51,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -47.0
-margin_top = 35.5
-margin_right = 47.0
-margin_bottom = 78.5
-text = "retry"
+margin_left = -111.5
+margin_top = 34.5
+margin_right = 111.5
+margin_bottom = 77.5
+custom_fonts/font = SubResource( 2 )
+text = "Угрохать ещё планету"
 __meta__ = {
 "_edit_use_anchors_": false
 }
