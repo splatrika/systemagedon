@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/star_system_objects_support/asteroid_path_viwer.gd"
 }, {
 "base": "Node",
+"class": "DestroyedPlanetAccentController",
+"language": "GDScript",
+"path": "res://assets/scripts/destroyed_planet_accent_controller.gd"
+}, {
+"base": "Node",
 "class": "HardnessController",
 "language": "GDScript",
 "path": "res://assets/scripts/hardness_controller.gd"
@@ -117,6 +122,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AsteroidPathViewController": "",
 "AsteroidPathViewer": "",
+"DestroyedPlanetAccentController": "",
 "HardnessController": "",
 "LoseController": "",
 "MoveOrbitsUI": "",

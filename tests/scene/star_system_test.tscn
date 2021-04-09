@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/resources/textures/star_glow.png" type="Texture" id=20]
 [ext_resource path="res://assets/resources/textures/stars/star1.png" type="Texture" id=21]
 [ext_resource path="res://assets/scripts/hardness_controller.gd" type="Script" id=22]
+[ext_resource path="res://assets/scripts/destroyed_planet_accent_controller.gd" type="Script" id=23]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 12 )
@@ -221,7 +222,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5616, 0, 0 )
 [node name="PlanetOrbit2" parent="StarSystem" instance=ExtResource( 2 )]
 orbit_radius = 28.0
 planet_rotation_degress = 50.0
-planet_rotation_factor = 1.2
 self_rotate_velocity = 15.0
 __planet = NodePath("Planet")
 
@@ -231,7 +231,6 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
 [node name="PlanetOrbit3" parent="StarSystem" instance=ExtResource( 2 )]
 orbit_radius = 45.0
 planet_rotation_degress = 50.0
-planet_rotation_factor = 1.5
 self_rotate_velocity = -5.0
 __planet = NodePath("Planet")
 
@@ -315,4 +314,9 @@ anims/start = SubResource( 7 )
 script = ExtResource( 22 )
 __asteroid_generator = NodePath("../AsteroidGenerator")
 score_to_hardness_up = 20
+
+[node name="DestroyedPlanetAccentController" type="Node" parent="."]
+script = ExtResource( 23 )
+level_node = NodePath("..")
+__main_camera = NodePath("../Camera")
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
