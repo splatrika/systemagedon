@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scripts/time.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/move_orbits_ui.gd" type="Script" id=6]
 [ext_resource path="res://assets/start_system_objects/Asteroid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/start_system_objects/AsteroidPath.tscn" type="PackedScene" id=8]
@@ -18,39 +17,11 @@
 [ext_resource path="res://assets/start_system_objects/PlayerScoreTimeController.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/scripts/star_system_objects_support/asteroid_path_view_controller.gd" type="Script" id=17]
 [ext_resource path="res://assets/star_system_objects_support/AteroidPathViewer.tscn" type="PackedScene" id=18]
-[ext_resource path="res://tests/scene/star_system_test.gd" type="Script" id=19]
 [ext_resource path="res://assets/enviroment/space1_enviroment.tres" type="Environment" id=20]
 [ext_resource path="res://assets/scripts/hardness_controller.gd" type="Script" id=22]
 [ext_resource path="res://assets/scripts/destroyed_planet_accent_controller.gd" type="Script" id=23]
 
-[sub_resource type="Animation" id=5]
-length = 5.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("StarSystem/PlanetOrbit:planet_rotation_degress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 50.0, 360.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("StarSystem/PlanetOrbit2:planet_rotation_degress")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 50.0, 200.0 ]
-}
-
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "camera_move"
 length = 20.0
 loop = true
@@ -115,7 +86,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 2, 3.9, 6, 8, 10, 12, 14, 16, 18, 20.1 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "start"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Camera:rotation_degrees:x")
@@ -177,9 +148,22 @@ tracks/5/keys = {
 "points": PoolRealArray( 33.1778, -0.25, 0, 0.5, 0, 33.1778, -0.5, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "camera_move", -1, 1.0, false ],
+"method": "play"
+} ]
+}
 
-[node name="Spatial" type="Spatial"]
-script = ExtResource( 19 )
+[node name="StarSystemScreen" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -0.38072, 0.248928, 0.890554, 0.547242, 0.836974, 0, -0.745371, 0.487349, -0.454877, 0, 117.057, 33.1778 )
@@ -195,7 +179,7 @@ __PPlanetOrbit_orbits = [ NodePath("PlanetOrbit"), NodePath("PlanetOrbit2"), Nod
 orbit_radius = 17.0
 planet_rotation_degress = 50.0
 self_rotate_velocity = 10.0
-__planet = NodePath("Planet")
+__planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit/Planet")
 
 [node name="Planet" parent="StarSystem/PlanetOrbit" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5616, 0, 0 )
@@ -204,7 +188,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5616, 0, 0 )
 orbit_radius = 28.0
 planet_rotation_degress = 50.0
 self_rotate_velocity = 15.0
-__planet = NodePath("Planet")
+__planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit2/Planet")
 
 [node name="Planet" parent="StarSystem/PlanetOrbit2" instance=ExtResource( 3 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
@@ -213,7 +197,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
 orbit_radius = 45.0
 planet_rotation_degress = 50.0
 self_rotate_velocity = -5.0
-__planet = NodePath("Planet")
+__planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit3/Planet")
 
 [node name="Planet" parent="StarSystem/PlanetOrbit3" instance=ExtResource( 3 )]
 transform = Transform( 2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 26.8946, 0, 0 )
@@ -223,7 +207,7 @@ transform = Transform( 2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 26.8946, 0, 0 )
 [node name="AsteroidGenerator" parent="." instance=ExtResource( 9 )]
 asteroids_prefabs = [ ExtResource( 7 ) ]
 asteroid_path_prefab = ExtResource( 8 )
-level_node = NodePath("../StarSystem")
+level_node = NodePath("../../StarSystemScreen/StarSystem")
 asteroids_speed = 80.0
 pathes_smooth = 15
 spawn_delay = 3.0
@@ -231,16 +215,9 @@ size = Vector3( 100, 150, 80 )
 
 [node name="MoveOrbitsUI" type="Node" parent="."]
 script = ExtResource( 6 )
-__star_system = NodePath("../StarSystem")
-__orbit_drawer = NodePath("../OrbitsViewer")
+__star_system = NodePath("../../StarSystemScreen/StarSystem")
+__orbit_drawer = NodePath("../../StarSystemScreen/OrbitsViewer")
 move_speed = 100.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/main = SubResource( 5 )
-
-[node name="Time" type="Node" parent="."]
-script = ExtResource( 5 )
-__star_system = NodePath("../StarSystem")
 
 [node name="OrbitsViewer" parent="." instance=ExtResource( 1 )]
 size = Vector2( 2000, 2000 )
@@ -252,39 +229,39 @@ accent_color = Color( 1, 1, 0.196078, 0.756863 )
 [node name="LoseController" type="Node" parent="."]
 script = ExtResource( 10 )
 lose_screen_prefab = ExtResource( 11 )
-level_scene = NodePath("..")
+level_scene = NodePath("../../StarSystemScreen")
 
 [node name="PlayerScore" type="Node" parent="."]
 script = ExtResource( 14 )
 
 [node name="PlayerScoreHUDController" type="Node" parent="."]
 script = ExtResource( 15 )
-__player_score_hud = NodePath("../CanvasLayer/PlayerScoreHUD")
+__player_score_hud = NodePath("../../StarSystemScreen/HUDs/PlayerScoreHUD")
 
 [node name="PlayerScoreTimeController" parent="." instance=ExtResource( 16 )]
-__player_score = NodePath("../PlayerScore")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerScoreHUD" parent="CanvasLayer" instance=ExtResource( 13 )]
+__player_score = NodePath("../../StarSystemScreen/PlayerScore")
 
 [node name="AsteroidPathViewController" type="Node" parent="."]
 script = ExtResource( 17 )
-level_scene = NodePath("..")
+level_scene = NodePath("../../StarSystemScreen")
 viewer_prefab = ExtResource( 18 )
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
-anims/camera_move = SubResource( 6 )
-anims/start = SubResource( 7 )
+anims/camera_move = SubResource( 1 )
+anims/start = SubResource( 2 )
 
 [node name="HardnessController" type="Node" parent="."]
 script = ExtResource( 22 )
-__asteroid_generator = NodePath("../AsteroidGenerator")
+__asteroid_generator = NodePath("../../StarSystemScreen/AsteroidGenerator")
 score_to_hardness_up = 20
 
 [node name="DestroyedPlanetAccentController" type="Node" parent="."]
 script = ExtResource( 23 )
-level_node = NodePath("..")
-__main_camera = NodePath("../Camera")
-[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
+level_node = NodePath("../../StarSystemScreen")
+__main_camera = NodePath("../../StarSystemScreen/Camera")
+
+[node name="HUDs" type="CanvasLayer" parent="."]
+
+[node name="PlayerScoreHUD" parent="HUDs" instance=ExtResource( 13 )]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]

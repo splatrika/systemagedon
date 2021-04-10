@@ -1,0 +1,377 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/start_system_objects/Star.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/enviroment/space1_enviroment.tres" type="Environment" id=6]
+[ext_resource path="res://assets/resources/textures/logo.png" type="Texture" id=7]
+[ext_resource path="res://assets/resources/fonts/Exo2-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://screens/start_screen.gd" type="Script" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start_game"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -11.015, -0.25, 0, 0.5, 0, 0, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.5, 0, 117.057, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Camera:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.5, 0, 33.178, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 37.8, -0.25, 0, 0.5, 0, 70, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TextureRect:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 210, -0.25, 0, 0.25, 0, 210, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TextureRect:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 120, -0.25, 0, 0.25, 0, -88, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Label:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 488.5, -0.25, 0, 0.25, 0, 488.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Label:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 565, -0.25, 0, 0.25, 0, 741, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Label2:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Label2:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Label2:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Label2:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("ColorRect2:color:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0, 0.188235, -0.05, 0, 0.2, 0, 0, -0.2, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.5 )
+}
+
+[sub_resource type="Animation" id=3]
+length = 6.0
+loop = true
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TextureRect:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.75, 0, 0.75, 0, 1.05, -0.75, 0, 0.75, 0, 1, -0.75, 0, 0.75, 0, 1.05, -0.75, 0, 0.75, 0, 1, -0.75, 0, 0.75, 0 ),
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Label:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 565, -0.25, 0, 0.25, 0, 565, 0, 0, 0, 0, 533, -0.2, 0, 0.2, 0, 565, 0, 0, 0, 0, 541, -0.1, 0, 0.1, 0, 565, 0, 0, 0, 0, 549, -0.05, 0, 0.05, 0, 565, 0, 0, 0, 0, 557, -0.025, 0, 0.025, 0, 565, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 3, 3.2, 3.4, 3.55, 3.7, 3.8, 3.9, 3.95, 4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Label:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 488.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "start"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0, 0, -0.25, 0, 0, 0, 0, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0, 0, -0.25, 0, 0, 0, 0, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ColorRect:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0, 0, -0.25, 0, 0, 0, 0, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ColorRect:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0, 0, 1, -0.25, 0, 0, 0, 0, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 9 )
+
+[node name="StartScreen" type="Node"]
+script = ExtResource( 10 )
+star_system_screen = "res://screens/star_system_screen.tscn"
+
+[node name="StarSystemScene" type="Spatial" parent="."]
+
+[node name="OrbitsViewer" parent="StarSystemScene" instance=ExtResource( 4 )]
+size = Vector2( 3000, 3000 )
+pixel_size_in_3D = 0.08
+orbit_line_width = 3.0
+line_color = Color( 1, 1, 1, 0.764706 )
+
+[node name="StarSystem" parent="StarSystemScene" instance=ExtResource( 1 )]
+__PPlanetOrbit_orbits = [ NodePath("PlanetOrbit1"), NodePath("PlanetOrbit2") ]
+
+[node name="Star" parent="StarSystemScene/StarSystem" instance=ExtResource( 2 )]
+transform = Transform( 7.76971, 0, -1.90569, 0, 8, 0, 1.90569, 0, 7.76971, 0, 0, 0 )
+
+[node name="PlanetOrbit1" parent="StarSystemScene/StarSystem" instance=ExtResource( 5 )]
+orbit_radius = 15.0
+planet_rotation_degress = -20.0
+self_rotate_velocity = -10.0
+__planet = NodePath("../PlanetOrbit1/Planet")
+
+[node name="Planet" parent="StarSystemScene/StarSystem/PlanetOrbit1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0 )
+
+[node name="PlanetOrbit2" parent="StarSystemScene/StarSystem" instance=ExtResource( 5 )]
+orbit_radius = 30.0
+self_rotate_velocity = 20.0
+__planet = NodePath("Planet")
+
+[node name="Planet" parent="StarSystemScene/StarSystem/PlanetOrbit2" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 15, 0, 0 )
+
+[node name="PlanetOrbit3" parent="StarSystemScene/StarSystem" instance=ExtResource( 5 )]
+orbit_radius = 46.0
+__planet = NodePath("Planet")
+
+[node name="Planet" parent="StarSystemScene/StarSystem/PlanetOrbit3" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 15, 0, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="StarSystemScene"]
+environment = ExtResource( 6 )
+
+[node name="Camera" type="Camera" parent="StarSystemScene"]
+transform = Transform( 1, 0, 0, 0, 0.981577, 0.191066, 0, -0.191066, 0.981577, 0, 18.7207, 102.541 )
+current = true
+fov = 37.8
+far = 664.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StarSystemScene"]
+anims/start_game = SubResource( 1 )
+
+[node name="StarScreenHUD" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="StarScreenHUD"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="StarScreenHUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -430.0
+margin_top = 120.0
+margin_right = 430.0
+margin_bottom = 196.0
+rect_pivot_offset = Vector2( 430, 60 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StarScreenHUD"]
+autoplay = "start"
+anims/hide = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/start = SubResource( 4 )
+
+[node name="Label" type="Label" parent="StarScreenHUD"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -151.5
+margin_top = -155.0
+margin_right = 151.5
+margin_bottom = -112.0
+custom_fonts/font = SubResource( 5 )
+text = "Нажми ПРОБЕЛ"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="StarScreenHUD"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.5
+margin_top = -67.0
+margin_right = 88.5
+margin_bottom = -24.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 0.509804 )
+text = "2021 © Даниил Белов
+Made with Godot Engine"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="StarScreenHUD"]
+anchor_left = 0.000912762
+anchor_right = 1.00091
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

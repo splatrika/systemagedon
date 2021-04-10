@@ -147,7 +147,10 @@ _global_script_class_icons={
 [application]
 
 config/name="ProjectStarSystemCurse"
-run/main_scene="res://tests/scene/star_system_test.tscn"
+run/main_scene="res://screens/start_screen.tscn"
+boot_splash/image="res://assets/resources/textures/boot_splash.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [display]
