@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/lose_controller.gd"
 }, {
 "base": "Node",
+"class": "LoseHUDGotoMainScreenController",
+"language": "GDScript",
+"path": "res://assets/scripts/hud_controllers/lose_hud_goto_main_screen.gd"
+}, {
+"base": "Node",
 "class": "MoveOrbitsUI",
 "language": "GDScript",
 "path": "res://assets/scripts/move_orbits_ui.gd"
@@ -59,7 +64,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/star_system_objects_support/p_asteroid_path_item.gd"
 }, {
-"base": "Control",
+"base": "CanvasLayer",
 "class": "PLoseHUD",
 "language": "GDScript",
 "path": "res://assets/scripts/p_lose_hud.gd"
@@ -125,6 +130,7 @@ _global_script_class_icons={
 "DestroyedPlanetAccentController": "",
 "HardnessController": "",
 "LoseController": "",
+"LoseHUDGotoMainScreenController": "",
 "MoveOrbitsUI": "",
 "PAsteroid": "",
 "PAsteroidGenerator": "",

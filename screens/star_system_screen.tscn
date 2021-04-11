@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scripts/hud_controllers/lose_hud_goto_main_screen.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/move_orbits_ui.gd" type="Script" id=6]
 [ext_resource path="res://assets/start_system_objects/Asteroid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/start_system_objects/AsteroidPath.tscn" type="PackedScene" id=8]
@@ -166,7 +167,7 @@ tracks/6/keys = {
 [node name="StarSystemScreen" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.38072, 0.248928, 0.890554, 0.547242, 0.836974, 0, -0.745371, 0.487349, -0.454877, 0, 117.057, 33.1778 )
+transform = Transform( 0.999999, 0, 0, 0, 0.329097, 0.944296, 0, -0.944296, 0.329097, 0, 72.2855, 33.1778 )
 far = 596.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -264,4 +265,8 @@ __main_camera = NodePath("../../StarSystemScreen/Camera")
 [node name="HUDs" type="CanvasLayer" parent="."]
 
 [node name="PlayerScoreHUD" parent="HUDs" instance=ExtResource( 13 )]
+
+[node name="LoseHUDGotoMainScreenController" type="Node" parent="."]
+script = ExtResource( 5 )
+main_screen = "res://screens/start_screen.tscn"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]

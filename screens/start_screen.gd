@@ -3,6 +3,7 @@ extends Node
 
 export var star_system_screen : String = ""
 
+
 func _start_game():
 	$StarSystemScene/AnimationPlayer.play("start_game")
 	$StarScreenHUD/AnimationPlayer.play("hide")

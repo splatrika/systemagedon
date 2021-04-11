@@ -54,6 +54,13 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 9 )
+
 [sub_resource type="Animation" id=2]
 resource_name = "hide"
 length = 0.5
@@ -240,13 +247,6 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=5]
-size = 35
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 9 )
-
 [node name="StartScreen" type="Node"]
 script = ExtResource( 10 )
 star_system_screen = "res://screens/star_system_screen.tscn"
@@ -326,12 +326,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StarScreenHUD"]
-autoplay = "start"
-anims/hide = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/start = SubResource( 4 )
-
 [node name="Label" type="Label" parent="StarScreenHUD"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -342,7 +336,7 @@ margin_top = -155.0
 margin_right = 151.5
 margin_bottom = -112.0
 custom_fonts/font = SubResource( 5 )
-text = "Нажми ПРОБЕЛ"
+text = "Нажмите ПРОБЕЛ"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -375,3 +369,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StarScreenHUD"]
+autoplay = "start"
+anims/hide = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/start = SubResource( 4 )
