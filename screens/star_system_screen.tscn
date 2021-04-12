@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
@@ -18,7 +18,9 @@
 [ext_resource path="res://assets/start_system_objects/PlayerScoreTimeController.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/scripts/star_system_objects_support/asteroid_path_view_controller.gd" type="Script" id=17]
 [ext_resource path="res://assets/star_system_objects_support/AteroidPathViewer.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/hud/KeysHint.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/enviroment/space1_enviroment.tres" type="Environment" id=20]
+[ext_resource path="res://assets/scripts/first_play_hint_controller.gd" type="Script" id=21]
 [ext_resource path="res://assets/scripts/hardness_controller.gd" type="Script" id=22]
 [ext_resource path="res://assets/scripts/destroyed_planet_accent_controller.gd" type="Script" id=23]
 
@@ -167,7 +169,7 @@ tracks/6/keys = {
 [node name="StarSystemScreen" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.329097, 0.944296, 0, -0.944296, 0.329097, 0, 72.2855, 33.1778 )
+transform = Transform( -0.38072, 0.248928, 0.890555, 0.547242, 0.836975, 0, -0.745371, 0.487349, -0.454877, 0, 117.057, 33.1778 )
 far = 596.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -266,7 +268,23 @@ __main_camera = NodePath("../../StarSystemScreen/Camera")
 
 [node name="PlayerScoreHUD" parent="HUDs" instance=ExtResource( 13 )]
 
+[node name="KeysHint" parent="HUDs" instance=ExtResource( 19 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -203.0
+margin_right = -40.0
+margin_bottom = -40.0
+
 [node name="LoseHUDGotoMainScreenController" type="Node" parent="."]
 script = ExtResource( 5 )
 main_screen = "res://screens/start_screen.tscn"
+
+[node name="FirstPlayHintController" type="Node" parent="."]
+script = ExtResource( 21 )
+__asteroid_generator = NodePath("../AsteroidGenerator")
+__player_score_controller = NodePath("../PlayerScoreTimeController")
+__key_hint = NodePath("../HUDs/KeysHint")
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]

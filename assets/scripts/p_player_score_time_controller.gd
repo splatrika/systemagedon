@@ -21,3 +21,9 @@ func _ready():
 func _on_Timer_timeout():
 	if is_instance_valid(self.player_score):
 		self.player_score.score += 1
+
+func set_pause(value : bool):
+	if (value):
+		$Timer.stop()
+	else:
+		$Timer.start()

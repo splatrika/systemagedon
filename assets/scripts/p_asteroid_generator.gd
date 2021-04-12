@@ -141,3 +141,9 @@ func _on_PPlanetOrbit_updated(planet_orbit : PPlanetOrbit):
 func _on_PPlanetOrbit_removed(planet_orbit : PPlanetOrbit):
 	self._planet_orbits.remove(self._planet_orbits.find(planet_orbit))
 
+
+func set_pause(value : bool):
+	if (value):
+		$SpawnTimer.stop()
+	else:
+		$SpawnTimer.start()

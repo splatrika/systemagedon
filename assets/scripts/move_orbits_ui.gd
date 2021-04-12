@@ -45,13 +45,18 @@ func _ready() -> void:
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
+		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_up_pressed")
 		self.selected_orbit_index += 1
 	elif event.is_action_pressed("ui_down"):
+		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_down_pressed")
 		self.selected_orbit_index -= 1
 
 
 func _physics_process(delta : float) -> void:
 	if Input.is_action_pressed("ui_left"):
 		star_system.PPlanetOrbit_orbits[self.selected_orbit_index].planet_rotation_degress -= self.move_speed * delta
+		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_left_pressing")
 	elif Input.is_action_pressed("ui_right"):
 		star_system.PPlanetOrbit_orbits[self.selected_orbit_index].planet_rotation_degress += self.move_speed * delta
+		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_right_pressing")
+		
