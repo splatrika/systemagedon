@@ -41,6 +41,8 @@ var _PPlanetOrbit_orbits_to_draw : Array
 
 
 func _on_PPlanetOrbit_updated(orbit : PPlanetOrbit):
+	if orbit == null: # Временный костыль
+		return # TODO избавиться от костыля
 	if self._PPlanetOrbit_orbits_to_draw.find(orbit) == -1:
 		self._PPlanetOrbit_orbits_to_draw.append(orbit)
 	self.update()

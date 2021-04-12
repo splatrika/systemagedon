@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Label",
+"class": "AnimatedMessageLabel",
+"language": "GDScript",
+"path": "res://assets/scripts/hud/animated_message_label.gd"
+}, {
 "base": "Node",
 "class": "AsteroidPathViewController",
 "language": "GDScript",
@@ -135,6 +140,7 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/time_ui.gd"
 } ]
 _global_script_class_icons={
+"AnimatedMessageLabel": "",
 "AsteroidPathViewController": "",
 "AsteroidPathViewer": "",
 "DestroyedPlanetAccentController": "",

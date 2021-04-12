@@ -1,14 +1,79 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/enviroment/space1_enviroment.tres" type="Environment" id=1]
 [ext_resource path="res://assets/resources/fonts/Exo2-Light.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://screens/story_screen.gd" type="Script" id=4]
 [ext_resource path="res://assets/resources/textures/hud/messages_panel.png" type="Texture" id=5]
+[ext_resource path="res://assets/scripts/hud/animated_message_label.gd" type="Script" id=6]
+[ext_resource path="res://assets/PressSpaceToSkeep.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect/TextureRect:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect/TextureRect:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttentionLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MessageLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "story"
@@ -221,6 +286,47 @@ tracks/19/keys = {
 "update": 1,
 "values": [ false, true, true, false ]
 }
+tracks/20/type = "value"
+tracks/20/path = NodePath("MessageLabel:message_to_show")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 2.8, 8, 12, 18.1, 22, 26.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов", "Ваша миссия — уберечь планеты от гибели", "Вам будет дана могучая сила — двигать планеты по их орбитам в нужную вам сторону с увеличенной скоростью", "Это ваш инструмент для выполнения миссии", "Уберегите как можно больше звёздных систем", "Мы верим в вас" ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath("MessageLabel")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 2.8, 8, 12, 18.1, 22, 26.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_text"
+}, {
+"args": [  ],
+"method": "show_text"
+}, {
+"args": [  ],
+"method": "show_text"
+}, {
+"args": [  ],
+"method": "show_text"
+}, {
+"args": [  ],
+"method": "show_text"
+}, {
+"args": [  ],
+"method": "show_text"
+} ]
+}
 
 [sub_resource type="DynamicFont" id=3]
 size = 25
@@ -267,6 +373,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="HUD/ColorRect/TextureRect"]
+modulate = Color( 1, 1, 1, 0.172549 )
+margin_left = 762.81
+margin_top = 581.959
+margin_right = 1063.81
+margin_bottom = 601.959
+custom_fonts/font = SubResource( 4 )
+text = "Чтобы пропустить, удерживайте пробел"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AttentionLabel" type="Label" parent="HUD"]
 visible = false
 anchor_left = 0.500669
@@ -292,6 +410,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
 autoplay = "story"
+anims/hide = SubResource( 5 )
 anims/story = SubResource( 2 )
 
 [node name="MessageLabel" type="Label" parent="HUD"]
@@ -311,7 +430,13 @@ align = 1
 valign = 1
 autowrap = true
 uppercase = true
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+message_to_show = "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов"
+show_char_delay = 0.03
+
+[node name="PressSpaceToSkeep" parent="." instance=ExtResource( 7 )]
 [connection signal="animation_finished" from="HUD/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="skeep" from="PressSpaceToSkeep" to="." method="_on_PressSpaceToSkeep_skeep"]

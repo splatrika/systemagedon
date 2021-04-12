@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/hud/animated_message_label.gd" type="Script" id=1]
+[ext_resource path="res://tests/scene/animated_message_label_test.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimatedMessageLabel" type="Label" parent="."]
+margin_left = 167.536
+margin_top = 190.705
+margin_right = 325.536
+margin_bottom = 204.705
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+message_to_show = "Hello world!!!"
