@@ -48,6 +48,9 @@ func set_current_state(value : int):
 	self._update_state()
 
 
+export var warning_hud_prefab : PackedScene
+
+
 var first_ok : bool = false
 var second_ok : bool = false
 
@@ -70,6 +73,7 @@ func _update_state():
 			self.first_ok = false
 			self.second_ok = false
 		elif self.current_state == State.MovePlanetsHint:
+			self._push_warning_hud()
 			current_state = State.FreeGame
 	
 	if self.current_state == State.SelectOrbitHint || self.current_state == State.MovePlanetsHint:
@@ -86,6 +90,10 @@ func _update_state():
 	if self.current_state == State.MovePlanetsHint:
 		self.key_hint.play_move_planets()
 
+
+func _push_warning_hud():
+	var hud : Node = self.warning_hud_prefab.instance()
+	get_tree().get_root().add_child(hud)
 
 func _on_MoveOrbitsUILitener_up_pressed():
 	if self.current_state == State.SelectOrbitHint:

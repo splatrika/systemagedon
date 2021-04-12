@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/scripts/first_play_hint_controller.gd" type="Script" id=21]
 [ext_resource path="res://assets/scripts/hardness_controller.gd" type="Script" id=22]
 [ext_resource path="res://assets/scripts/destroyed_planet_accent_controller.gd" type="Script" id=23]
+[ext_resource path="res://assets/hud/WarningHUD.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "camera_move"
@@ -213,7 +214,7 @@ asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../../StarSystemScreen/StarSystem")
 asteroids_speed = 80.0
 pathes_smooth = 15
-spawn_delay = 3.0
+spawn_delay = 4.0
 size = Vector3( 100, 150, 80 )
 
 [node name="MoveOrbitsUI" type="Node" parent="."]
@@ -287,4 +288,5 @@ script = ExtResource( 21 )
 __asteroid_generator = NodePath("../AsteroidGenerator")
 __player_score_controller = NodePath("../PlayerScoreTimeController")
 __key_hint = NodePath("../HUDs/KeysHint")
+warning_hud_prefab = ExtResource( 24 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]
