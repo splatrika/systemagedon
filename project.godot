@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/star_system_objects_support/asteroid_path_viwer.gd"
 }, {
 "base": "Node",
+"class": "DangerAttentionController",
+"language": "GDScript",
+"path": "res://assets/scripts/hud_controllers/danger_attention_controller.gd"
+}, {
+"base": "Node",
 "class": "DestroyedPlanetAccentController",
 "language": "GDScript",
 "path": "res://assets/scripts/destroyed_planet_accent_controller.gd"
@@ -33,6 +38,11 @@ _global_script_classes=[ {
 "class": "FirstPlayHintController",
 "language": "GDScript",
 "path": "res://assets/scripts/first_play_hint_controller.gd"
+}, {
+"base": "Timer",
+"class": "GameStartDelay",
+"language": "GDScript",
+"path": "res://assets/scripts/start_game_delay.gd"
 }, {
 "base": "Node",
 "class": "HardnessController",
@@ -130,6 +140,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/hud_controllers/player_score_hud_controller.gd"
 }, {
 "base": "Node",
+"class": "StarSystemGenerator",
+"language": "GDScript",
+"path": "res://assets/scripts/star_system_generator.gd"
+}, {
+"base": "Node",
 "class": "Time",
 "language": "GDScript",
 "path": "res://assets/scripts/time.gd"
@@ -143,8 +158,10 @@ _global_script_class_icons={
 "AnimatedMessageLabel": "",
 "AsteroidPathViewController": "",
 "AsteroidPathViewer": "",
+"DangerAttentionController": "",
 "DestroyedPlanetAccentController": "",
 "FirstPlayHintController": "",
+"GameStartDelay": "",
 "HardnessController": "",
 "LoseController": "",
 "LoseHUDGotoMainScreenController": "",
@@ -164,6 +181,7 @@ _global_script_class_icons={
 "PStarSystem": "",
 "PlayerScore": "",
 "PlayerScoreHUDController": "",
+"StarSystemGenerator": "",
 "Time": "",
 "TimeUI": ""
 }

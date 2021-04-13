@@ -9,6 +9,19 @@ enum State {
 }
 
 
+var game_start_delay : GameStartDelay setget set_game_start_delay
+func set_game_start_delay(value : GameStartDelay):
+	game_start_delay = value
+
+
+export var __game_start_delay : NodePath setget _set__game_start_delay
+func _set__game_start_delay(value : NodePath) -> void:
+	__game_start_delay = value
+	var node : Node = get_node_or_null(value)
+	if node is GameStartDelay:
+		self.game_start_delay = node
+
+
 var asteroid_generator : PAsteroidGenerator setget set_asteroid_generator
 func set_asteroid_generator(value : PAsteroidGenerator):
 	asteroid_generator = value
@@ -20,6 +33,7 @@ func _set__asteroid_generator(value : NodePath) -> void:
 	var node : Node = get_node_or_null(value)
 	if node is PAsteroidGenerator:
 		self.asteroid_generator = node
+		
 
 
 var player_score_controller : PPlayerScoreTimeController
@@ -58,13 +72,14 @@ var second_ok : bool = false
 func _ready():
 	add_to_group("MoveOrbitsUILitener")
 	call_deferred("_set__asteroid_generator", self.__asteroid_generator)
+	call_deferred("_set__game_start_delay", self.__game_start_delay)
 	call_deferred("_set__player_score_controller", self.__player_score_controller)
 	call_deferred("_set__key_hint", self.__key_hint)
 	call_deferred("_update_state")
 
 
 func _update_state():
-	if not is_instance_valid(self.asteroid_generator) || not is_instance_valid(self.key_hint):
+	if not is_instance_valid(self.game_start_delay) || not is_instance_valid(self.key_hint):
 		return
 	
 	if first_ok and second_ok:
@@ -81,9 +96,9 @@ func _update_state():
 		self.player_score_controller.set_pause(true)
 		self.key_hint.show()
 	else:
-		self.asteroid_generator.set_pause(false)
-		self.player_score_controller.set_pause(false)
+		self.game_start_delay.start()
 		self.key_hint.hide()
+		queue_free()
 	
 	if self.current_state == State.SelectOrbitHint:
 		self.key_hint.play_orbit_select()

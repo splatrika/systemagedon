@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://assets/scripts/hardness_controller.gd" type="Script" id=22]
 [ext_resource path="res://assets/scripts/destroyed_planet_accent_controller.gd" type="Script" id=23]
 [ext_resource path="res://assets/hud/WarningHUD.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/scripts/start_game_delay.gd" type="Script" id=25]
+[ext_resource path="res://assets/scripts/hud_controllers/danger_attention_controller.gd" type="Script" id=26]
+[ext_resource path="res://assets/hud/DangerAttention.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=1]
 resource_name = "camera_move"
@@ -214,7 +217,7 @@ asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../../StarSystemScreen/StarSystem")
 asteroids_speed = 80.0
 pathes_smooth = 15
-spawn_delay = 4.0
+spawn_delay = 3.0
 size = Vector3( 100, 150, 80 )
 
 [node name="MoveOrbitsUI" type="Node" parent="."]
@@ -285,8 +288,21 @@ main_screen = "res://screens/start_screen.tscn"
 
 [node name="FirstPlayHintController" type="Node" parent="."]
 script = ExtResource( 21 )
+__game_start_delay = NodePath("../GameStartDelay")
 __asteroid_generator = NodePath("../AsteroidGenerator")
 __player_score_controller = NodePath("../PlayerScoreTimeController")
 __key_hint = NodePath("../HUDs/KeysHint")
 warning_hud_prefab = ExtResource( 24 )
+
+[node name="GameStartDelay" type="Timer" parent="."]
+wait_time = 7.0
+script = ExtResource( 25 )
+__asteroid_generator = NodePath("../AsteroidGenerator")
+__player_score_controller = NodePath("../PlayerScoreTimeController")
+
+[node name="DangerAttentionController" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 26 )
+dangert_attention_prefab = ExtResource( 27 )
+__main_camera = NodePath("../Camera")
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]
