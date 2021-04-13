@@ -215,7 +215,7 @@ transform = Transform( 2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 26.8946, 0, 0 )
 asteroids_prefabs = [ ExtResource( 7 ) ]
 asteroid_path_prefab = ExtResource( 8 )
 level_node = NodePath("../../StarSystemScreen/StarSystem")
-asteroids_speed = 80.0
+asteroids_speed = 60.0
 pathes_smooth = 15
 spawn_delay = 3.0
 size = Vector3( 100, 150, 80 )
@@ -305,4 +305,5 @@ pause_mode = 2
 script = ExtResource( 26 )
 dangert_attention_prefab = ExtResource( 27 )
 __main_camera = NodePath("../Camera")
+level_node = NodePath("..")
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]
