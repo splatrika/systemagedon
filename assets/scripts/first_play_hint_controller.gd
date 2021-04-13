@@ -82,6 +82,11 @@ func _update_state():
 	if not is_instance_valid(self.game_start_delay) || not is_instance_valid(self.key_hint):
 		return
 	
+	if not GlobalConfig.show_hints:
+		self.key_hint.hide()
+		queue_free()
+		return
+	
 	if first_ok and second_ok:
 		if self.current_state == State.SelectOrbitHint:
 			current_state = State.MovePlanetsHint
@@ -98,6 +103,7 @@ func _update_state():
 	else:
 		self.game_start_delay.start()
 		self.key_hint.hide()
+		GlobalConfig.show_hints = false
 		queue_free()
 	
 	if self.current_state == State.SelectOrbitHint:

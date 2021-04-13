@@ -21,6 +21,8 @@ var attentions_by_path_id : Dictionary = {}
 
 export var attentions_max_count : int = 1
 
+export var level_node : NodePath
+
 var _attentions_count = 0
 
 
@@ -37,7 +39,7 @@ func on_AsteroidPath_created(path_id : int, path_node : PAsteroidPath):
 	var created_attention : Control = self.dangert_attention_prefab.instance() as Control
 	var attention_position : Vector2 = self.main_camera.unproject_position(center_point)
 	created_attention.rect_position = attention_position
-	get_tree().get_root().add_child(created_attention)
+	get_node(self.level_node).add_child(created_attention)
 	self.attensions_3D_positions[created_attention.get_instance_id()] = center_point
 	self.attentions_by_path_id[path_id] = created_attention
 	self._attentions_count += 1

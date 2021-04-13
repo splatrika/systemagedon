@@ -51,7 +51,6 @@ __meta__ = {
 margin_top = -32.0
 margin_right = 174.0
 margin_bottom = 33.0
-rect_scale = Vector2( 5, 5 )
 rect_pivot_offset = Vector2( 87, 32 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
