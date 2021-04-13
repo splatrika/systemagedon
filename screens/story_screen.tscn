@@ -8,14 +8,14 @@
 [ext_resource path="res://assets/scripts/hud/animated_message_label.gd" type="Script" id=6]
 [ext_resource path="res://assets/PressSpaceToSkeep.tscn" type="PackedScene" id=7]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "hide"
 length = 0.3
 tracks/0/type = "bezier"
@@ -75,9 +75,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "story"
-length = 30.0
+[sub_resource type="Animation" id=4]
+length = 35.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AttentionLabel:modulate:r")
 tracks/0/interp = 1
@@ -146,7 +145,7 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.6, 29.2, 30 )
+"times": PoolRealArray( 0, 0.6, 35.2, 36 )
 }
 tracks/7/type = "bezier"
 tracks/7/path = NodePath("ColorRect:modulate:g")
@@ -156,7 +155,7 @@ tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.6, 29.2, 30 )
+"times": PoolRealArray( 0, 0.6, 35.2, 36 )
 }
 tracks/8/type = "bezier"
 tracks/8/path = NodePath("ColorRect:modulate:b")
@@ -166,7 +165,7 @@ tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.6, 29.2, 30 )
+"times": PoolRealArray( 0, 0.6, 35.2, 36 )
 }
 tracks/9/type = "bezier"
 tracks/9/path = NodePath("ColorRect:modulate:a")
@@ -176,7 +175,7 @@ tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.6, 29.2, 30 )
+"times": PoolRealArray( 0, 0.6, 35.2, 36 )
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("MessageLabel:text")
@@ -185,127 +184,97 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 2.8, 8, 12, 18.1, 22, 26.1 ),
+"times": PoolRealArray( 3.2, 10, 14.8, 18.1, 24, 31 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов", "Ваша миссия — уберечь планеты от гибели", "Вам будет дана могучая сила — двигать планеты по их орбитам в нужную вам сторону с увеличенной скоростью", "Это ваш инструмент для выполнения миссии", "Уберегите как можно больше звёздных систем", "Мы верим в вас" ]
+"values": [ "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов", "Ваша миссия — уберечь планеты наших звёздных систем от попадания астероидов", "Для этого мы разработали специальное устройство", "Оно позволить вам двигать нужные вам планеты в выбранном направлении с увеличенной скоростью", "Через экран вы сможете наблюдать за звёздной системой, а так же будут отображаться пути, по которым летят астероиды", "Глядите в оба! Мы рассчитываем на вас..." ]
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath("MessageLabel:modulate:r")
+tracks/11/path = NodePath("MessageLabel:modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2.8, 3, 7.9, 8, 8.2, 11.9, 12, 12.2, 18, 18.1, 18.3, 21.9, 22, 22.2, 26, 26.1, 26.3, 27, 28.8 )
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 32.8, 34.6 )
 }
-tracks/12/type = "bezier"
-tracks/12/path = NodePath("MessageLabel:modulate:g")
+tracks/12/type = "value"
+tracks/12/path = NodePath("MessageLabel:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2.8, 3, 7.9, 8, 8.2, 11.9, 12, 12.2, 18, 18.1, 18.3, 21.9, 22, 22.2, 26, 26.1, 26.3, 27, 28.8 )
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
-tracks/13/type = "bezier"
-tracks/13/path = NodePath("MessageLabel:modulate:b")
+tracks/13/type = "value"
+tracks/13/path = NodePath("AttentionLabel:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2.8, 3, 7.9, 8, 8.2, 11.9, 12, 12.2, 18, 18.1, 18.3, 21.9, 22, 22.2, 26, 26.1, 26.3, 27, 28.8 )
-}
-tracks/14/type = "bezier"
-tracks/14/path = NodePath("MessageLabel:modulate:a")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2.8, 3, 7.9, 8, 8.2, 11.9, 12, 12.2, 18, 18.1, 18.3, 21.9, 22, 22.2, 26, 26.1, 26.3, 27, 28.8 )
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("MessageLabel:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("AttentionLabel:visible")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
 "times": PoolRealArray( 0, 1, 1.4, 1.8, 2.2, 2.6, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false, true, false, true, false ]
 }
-tracks/17/type = "bezier"
-tracks/17/path = NodePath("ColorRect/TextureRect:rect_scale:x")
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("ColorRect/TextureRect:rect_scale:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 0.8, 34.8, 35 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("ColorRect/TextureRect:rect_scale:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0.01, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 0.8, 34.8, 35 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("ColorRect/TextureRect:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.6, 34.9, 35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("MessageLabel:message_to_show")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.6, 0.8, 28.8, 29 )
+"times": PoolRealArray( 3.2, 10, 14.8, 18.1, 24, 31 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов", "Ваша миссия — уберечь планеты наших звёздных систем от попадания астероидов", "Для этого мы разработали специальное устройство", "Оно позволить вам двигать нужные вам планеты в выбранном направлении с увеличенной скоростью", "Через экран вы сможете наблюдать за звёздной системой, а так же будут отображаться пути, по которым летят астероиды", "Глядите в оба! Мы рассчитываем на вас..." ]
 }
-tracks/18/type = "bezier"
-tracks/18/path = NodePath("ColorRect/TextureRect:rect_scale:y")
+tracks/18/type = "method"
+tracks/18/path = NodePath("MessageLabel")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"points": PoolRealArray( 0.01, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.6, 0.8, 28.8, 29 )
-}
-tracks/19/type = "value"
-tracks/19/path = NodePath("ColorRect/TextureRect:visible")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
-"times": PoolRealArray( 0, 0.6, 28.9, 29 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true, false ]
-}
-tracks/20/type = "value"
-tracks/20/path = NodePath("MessageLabel:message_to_show")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/keys = {
-"times": PoolRealArray( 2.8, 8, 12, 18.1, 22, 26.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов", "Ваша миссия — уберечь планеты от гибели", "Вам будет дана могучая сила — двигать планеты по их орбитам в нужную вам сторону с увеличенной скоростью", "Это ваш инструмент для выполнения миссии", "Уберегите как можно больше звёздных систем", "Мы верим в вас" ]
-}
-tracks/21/type = "method"
-tracks/21/path = NodePath("MessageLabel")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
-"times": PoolRealArray( 2.8, 8, 12, 18.1, 22, 26.1 ),
+"times": PoolRealArray( 3.2, 10, 14.8, 18.1, 24, 31 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -328,7 +297,7 @@ tracks/21/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 25
 font_data = ExtResource( 3 )
 
@@ -348,16 +317,16 @@ current = true
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.891144
+margin_right = 0.891113
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="HUD/ColorRect"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -366,7 +335,6 @@ margin_left = -548.0
 margin_top = -314.0
 margin_right = 548.0
 margin_bottom = 314.0
-rect_scale = Vector2( 1, 0.01 )
 rect_pivot_offset = Vector2( 548, 314 )
 texture = ExtResource( 5 )
 __meta__ = {
@@ -379,7 +347,7 @@ margin_left = 762.81
 margin_top = 581.959
 margin_right = 1063.81
 margin_bottom = 601.959
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "Чтобы пропустить, удерживайте пробел"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -396,7 +364,7 @@ margin_top = -146.0
 margin_right = 319.0
 margin_bottom = 146.0
 rect_pivot_offset = Vector2( 319, 146 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.996078, 0.176471, 0.176471, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
@@ -410,12 +378,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
 autoplay = "story"
-anims/hide = SubResource( 5 )
-anims/story = SubResource( 2 )
+anims/hide = SubResource( 3 )
+anims/story = SubResource( 4 )
 
 [node name="MessageLabel" type="Label" parent="HUD"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -424,8 +391,8 @@ margin_left = -361.0
 margin_top = -183.0
 margin_right = 361.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 3 )
-text = "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов"
+custom_fonts/font = SubResource( 5 )
+text = "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов"
 align = 1
 valign = 1
 autowrap = true
@@ -434,7 +401,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-message_to_show = "Обнаружено, что на ряд звёздных систем идёт огромный поток разрушительных астероидов"
+message_to_show = "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов"
 show_char_delay = 0.03
 
 [node name="PressSpaceToSkeep" parent="." instance=ExtResource( 7 )]
