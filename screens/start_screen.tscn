@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/Star.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://screens/start_screen.gd" type="Script" id=10]
 [ext_resource path="res://assets/scripts/hints_allower.gd" type="Script" id=11]
+[ext_resource path="res://assets/start_system_objects/planets/Planet4.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start_game"
@@ -278,8 +279,7 @@ orbit_radius = 30.0
 self_rotate_velocity = 20.0
 __planet = NodePath("Planet")
 
-[node name="Planet" parent="StarSystemScene/StarSystem/PlanetOrbit2" instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 15, 0, 0 )
+[node name="Planet" parent="StarSystemScene/StarSystem/PlanetOrbit2" instance=ExtResource( 12 )]
 
 [node name="PlanetOrbit3" parent="StarSystemScene/StarSystem" instance=ExtResource( 5 )]
 orbit_radius = 46.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/enviroment/space1_enviroment.tres" type="Environment" id=1]
 [ext_resource path="res://assets/resources/fonts/Exo2-Light.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://assets/resources/textures/hud/messages_panel.png" type="Texture" id=5]
 [ext_resource path="res://assets/scripts/hud/animated_message_label.gd" type="Script" id=6]
 [ext_resource path="res://assets/PressSpaceToSkeep.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scripts/hud_controllers/messages_queue_controller.gd" type="Script" id=8]
+[ext_resource path="res://assets/resources/textures/hud/press_arrow.png" type="Texture" id=9]
+[ext_resource path="res://assets/resources/fonts/Exo2-ThinItalic.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -14,6 +17,77 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "complete_hide"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ColorRect/TextureRect:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.8, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect/TextureRect:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.8, 1 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttentionLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MessageLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MessageLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "hide"
@@ -76,7 +150,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 35.0
+length = 3.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AttentionLabel:modulate:r")
 tracks/0/interp = 1
@@ -206,7 +280,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 3.2 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -301,6 +375,35 @@ tracks/18/keys = {
 size = 25
 font_data = ExtResource( 3 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TextureRect:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -22, -0.1, 0, 0.1, 0, -22, -0.1, 0, 0.1, 0, -22, -0.1, 0, 0.1, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TextureRect:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -11, -0.1, 0, 0.1, 0, -3, -0.1, 0, 0.1, 0, -11, -0.1, 0, 0.1, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4 )
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 25
+font_data = ExtResource( 10 )
+
 [node name="StoryScreen" type="Node"]
 script = ExtResource( 4 )
 next_screen = "res://screens/star_system_screen.tscn"
@@ -317,6 +420,7 @@ current = true
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
+modulate = Color( 1, 1, 1, 0.943259 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.891144
@@ -378,11 +482,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
 autoplay = "story"
+anims/complete_hide = SubResource( 7 )
 anims/hide = SubResource( 3 )
 anims/story = SubResource( 4 )
 
 [node name="MessageLabel" type="Label" parent="HUD"]
-modulate = Color( 1, 1, 1, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -404,6 +508,55 @@ __meta__ = {
 message_to_show = "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов"
 show_char_delay = 0.03
 
+[node name="Control" type="Control" parent="HUD"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 160.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -11.0
+margin_right = 22.0
+margin_bottom = 11.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Control"]
+autoplay = "idle"
+anims/idle = SubResource( 6 )
+
+[node name="Label" type="Label" parent="HUD/Control"]
+visible = false
+margin_left = -43.4616
+margin_top = 13.8657
+margin_right = 41.5384
+margin_bottom = 44.8657
+custom_fonts/font = SubResource( 8 )
+text = "Пробел"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PressSpaceToSkeep" parent="." instance=ExtResource( 7 )]
+
+[node name="MessagesQueueController" type="Node" parent="."]
+script = ExtResource( 8 )
+messages = [ "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов", "Ваша миссия — уберечь планеты наших звёздных систем от попадания астероидов", "Для этого мы разработали специальное устройство", "Оно позволит вам двигать нужные вам планеты в выбранном направлении с увеличенной скоростью", "Через экран вы сможете наблюдать за звёздной системой, а так же будут отображаться пути, по которым летят астероиды", "Смотрите в оба! Мы рассчитываем на вас…" ]
+__messages_label = NodePath("../HUD/MessageLabel")
+__press_arrow = NodePath("../HUD/Control")
 [connection signal="animation_finished" from="HUD/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="skeep" from="PressSpaceToSkeep" to="." method="_on_PressSpaceToSkeep_skeep"]
+[connection signal="messages_ended" from="MessagesQueueController" to="." method="_on_MessagesQueueController_messages_ended"]

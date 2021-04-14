@@ -65,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/hud_controllers/lose_hud_goto_main_screen.gd"
 }, {
 "base": "Node",
+"class": "MessagesQueueController",
+"language": "GDScript",
+"path": "res://assets/scripts/hud_controllers/messages_queue_controller.gd"
+}, {
+"base": "Node",
 "class": "MoveOrbitsUI",
 "language": "GDScript",
 "path": "res://assets/scripts/move_orbits_ui.gd"
@@ -171,6 +176,7 @@ _global_script_class_icons={
 "HintsAllower": "",
 "LoseController": "",
 "LoseHUDGotoMainScreenController": "",
+"MessagesQueueController": "",
 "MoveOrbitsUI": "",
 "PAsteroid": "",
 "PAsteroidGenerator": "",

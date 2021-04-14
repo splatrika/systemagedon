@@ -1,6 +1,7 @@
 class_name AnimatedMessageLabel
 extends Label
 
+signal animation_ended()
 
 export var message_to_show : String = ""
 export var show_char_delay : float = 0.05
@@ -23,6 +24,8 @@ func _ready():
 
 func _physics_process(delta : float):
 	if self.text == message_to_show || _current_char_index_to_show >= len(self.message_to_show):
+		set_physics_process(false)
+		emit_signal("animation_ended")
 		return
 	_show_wait += delta
 	while _show_wait > self.show_char_delay:

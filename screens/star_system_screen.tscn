@@ -1,8 +1,8 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/start_system_objects/OrbitsViewer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/start_system_objects/PlanetOrbit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/start_system_objects/Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/start_system_objects/planets/Planet5.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/start_system_objects/StarSystem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/hud_controllers/lose_hud_goto_main_screen.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/move_orbits_ui.gd" type="Script" id=6]
@@ -27,6 +27,8 @@
 [ext_resource path="res://assets/scripts/start_game_delay.gd" type="Script" id=25]
 [ext_resource path="res://assets/scripts/hud_controllers/danger_attention_controller.gd" type="Script" id=26]
 [ext_resource path="res://assets/hud/DangerAttention.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/start_system_objects/planets/Planet3.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/start_system_objects/planets/Planet1.tscn" type="PackedScene" id=29]
 
 [sub_resource type="Animation" id=1]
 resource_name = "camera_move"
@@ -188,8 +190,7 @@ planet_rotation_degress = 50.0
 self_rotate_velocity = 10.0
 __planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit/Planet")
 
-[node name="Planet" parent="StarSystem/PlanetOrbit" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5616, 0, 0 )
+[node name="Planet" parent="StarSystem/PlanetOrbit" instance=ExtResource( 28 )]
 
 [node name="PlanetOrbit2" parent="StarSystem" instance=ExtResource( 2 )]
 orbit_radius = 28.0
@@ -198,7 +199,6 @@ self_rotate_velocity = 15.0
 __planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit2/Planet")
 
 [node name="Planet" parent="StarSystem/PlanetOrbit2" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 26.8946, 0, 0 )
 
 [node name="PlanetOrbit3" parent="StarSystem" instance=ExtResource( 2 )]
 orbit_radius = 45.0
@@ -206,8 +206,7 @@ planet_rotation_degress = 50.0
 self_rotate_velocity = -5.0
 __planet = NodePath("../../../StarSystemScreen/StarSystem/PlanetOrbit3/Planet")
 
-[node name="Planet" parent="StarSystem/PlanetOrbit3" instance=ExtResource( 3 )]
-transform = Transform( 2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 26.8946, 0, 0 )
+[node name="Planet" parent="StarSystem/PlanetOrbit3" instance=ExtResource( 29 )]
 
 [node name="MeshInstance" parent="StarSystem" instance=ExtResource( 12 )]
 

@@ -11,3 +11,4 @@ sun_energy = 7.72
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
+background_energy = 6.61
