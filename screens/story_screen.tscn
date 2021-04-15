@@ -18,7 +18,7 @@ font_data = ExtResource( 3 )
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "complete_hide"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("ColorRect/TextureRect:rect_scale:x")
@@ -89,8 +89,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "hide"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("ColorRect/TextureRect:rect_scale:x")
@@ -149,7 +148,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AttentionLabel:modulate:r")
@@ -371,12 +370,11 @@ tracks/18/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 25
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "idle"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "bezier"
@@ -482,9 +480,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
 autoplay = "story"
-anims/complete_hide = SubResource( 7 )
-anims/hide = SubResource( 3 )
-anims/story = SubResource( 4 )
+anims/complete_hide = SubResource( 3 )
+anims/hide = SubResource( 4 )
+anims/story = SubResource( 5 )
 
 [node name="MessageLabel" type="Label" parent="HUD"]
 anchor_left = 0.5
@@ -495,9 +493,8 @@ margin_left = -361.0
 margin_top = -183.0
 margin_right = 361.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Мы обнаружили что на ряд звёздных систем, где расположены наши колонии, направляются потоки огромных астероидов"
-align = 1
 valign = 1
 autowrap = true
 uppercase = true
@@ -536,7 +533,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Control"]
 autoplay = "idle"
-anims/idle = SubResource( 6 )
+anims/idle = SubResource( 7 )
 
 [node name="Label" type="Label" parent="HUD/Control"]
 visible = false

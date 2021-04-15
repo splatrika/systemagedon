@@ -1,3 +1,6 @@
+# This file is part of Systemagedon project
+# 2021 © Daniil Belov. All rights reserved
+
 class_name MoveOrbitsUI
 extends Node
 
@@ -46,10 +49,10 @@ func _ready() -> void:
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
 		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_up_pressed")
-		self.selected_orbit_index += 1
+		self.selected_orbit_index -= 1
 	elif event.is_action_pressed("ui_down"):
 		get_tree().call_group("MoveOrbitsUILitener", "_on_MoveOrbitsUILitener_down_pressed")
-		self.selected_orbit_index -= 1
+		self.selected_orbit_index += 1
 
 
 func _physics_process(delta : float) -> void:

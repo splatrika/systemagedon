@@ -1,3 +1,6 @@
+# This file is part of Systemagedon project
+# 2021 © Daniil Belov
+
 class_name AsteroidPathViewController
 extends Node
 

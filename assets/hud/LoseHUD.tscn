@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/p_lose_hud.gd" type="Script" id=1]
 [ext_resource path="res://assets/resources/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/resources/fonts/Exo2-Black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/resources/fonts/Exo2-ExtraBold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -53,6 +54,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+length = 1.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Label:custom_colors/font_color:r")
 tracks/0/interp = 1
@@ -113,10 +115,18 @@ tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "points": PoolRealArray( 738.5, -0.25, 0, 0.25, 0, 738.5, -0.25, 0, 0.25, 0, 514.5, -0.6, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.2, 0.8 )
+"times": PoolRealArray( 0, 0.9, 1.5 )
 }
 
 [sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
 font_data = ExtResource( 2 )
 
 [node name="LoseHUD" type="CanvasLayer"]
@@ -129,12 +139,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -431.0
+margin_left = -495.0
 margin_top = -242.5
-margin_right = 559.0
+margin_right = 495.0
 margin_bottom = -157.5
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -151,10 +161,14 @@ anims/close = SubResource( 2 )
 anims/start = SubResource( 3 )
 
 [node name="Buttons" type="Control" parent="."]
-margin_top = 738.5
-margin_bottom = 738.5
+margin_top = 545.886
+margin_bottom = 545.886
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RetryButton" type="Button" parent="Buttons"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -171,6 +185,7 @@ __meta__ = {
 }
 
 [node name="RetryButton2" type="Button" parent="Buttons"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -186,12 +201,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Buttons"]
+margin_left = 403.757
+margin_top = 24.4119
+margin_right = 502.757
+margin_bottom = 89.4119
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ПРОБЕЛ
+ESC"
+
+[node name="Label2" type="Label" parent="Buttons"]
+margin_left = 539.757
+margin_top = 24.4119
+margin_right = 899.757
+margin_bottom = 89.4119
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Попробовать ещё
+Сдаться (на начальный экран)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.678108
+margin_right = 0.678101
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 [connection signal="button_up" from="Buttons/RetryButton" to="." method="_on_RetryButton_button_up"]
