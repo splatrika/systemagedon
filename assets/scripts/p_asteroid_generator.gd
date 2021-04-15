@@ -49,22 +49,9 @@ func _set_size(value : Vector3) -> void:
 var _planet_orbits : Array = []
 
 
-enum _Direction {
-	FromUp,
-	FromDown,
-	FromFront,
-	FromBack,
-	FromLeft,
-	FromRight
-}
-
-
 func spawn_asteroid() -> void:
-	var direction : int = _Direction.FromUp
 	var created_path : PAsteroidPath = asteroid_path_prefab.instance()
 	var point_position : Vector3
-	var second_point_position : Vector3
-	var sub_point_position : Vector3
 	var size_half : Vector3 = self.size / 2
 	
 	var target_planet_orbit : int = randi() % len(self._planet_orbits)
